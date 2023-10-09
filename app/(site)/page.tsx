@@ -6,7 +6,7 @@ export default async function Home() {
   console.log(products);
 
   return (
-    <main className="grid-cols-fluid grid gap-16">
+    <main className="grid-cols-fluid grid gap-12">
       {products.map((product) => (
         <Product key={product.id} {...product} />
       ))}
