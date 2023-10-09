@@ -1,4 +1,5 @@
-import getProducts from '@/app/functions/stripe/getProducts';
+import getProducts from '@/actions/stripe/getProducts';
+import Product from '@/app/components/Product';
 
 export default async function Home() {
   const products = await getProducts();
@@ -6,7 +7,9 @@ export default async function Home() {
 
   return (
     <main>
-      <h1 className="text-2xl text-green-500">Tailwindworks</h1>
+      {products.map((product) => (
+        <Product key={product.id} {...product} />
+      ))}
     </main>
   );
 }
