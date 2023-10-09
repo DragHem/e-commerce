@@ -6,8 +6,6 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 
 const Nav = ({ user }: Session) => {
-  console.log(user);
-
   return (
     <nav className="flex items-center justify-between py-8">
       <h1>Nav</h1>

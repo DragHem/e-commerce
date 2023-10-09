@@ -1,11 +1,8 @@
-'use client';
+import getProducts from '@/app/functions/stripe/getProducts';
 
-import { useSession } from 'next-auth/react';
-
-export default function Home() {
-  const { data: session } = useSession();
-
-  console.log(session);
+export default async function Home() {
+  const products = await getProducts();
+  console.log(products);
 
   return (
     <main>
