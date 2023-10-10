@@ -4,11 +4,14 @@ import React from 'react';
 import type { Session } from 'next-auth';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Nav = ({ user }: Session) => {
   return (
     <nav className="flex items-center justify-between py-8">
-      <h1>Nav</h1>
+      <Link href="/">
+        <h1>Nav</h1>
+      </Link>
       <ul className="flex items-center gap-12">
         {!user && (
           <li className="rounded-md bg-teal-600 p-2 text-white">
