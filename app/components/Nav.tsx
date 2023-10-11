@@ -18,7 +18,10 @@ const Nav = ({ user }: Session) => {
         <h1>Shop</h1>
       </Link>
       <ul className="flex items-center gap-12">
-        <li className="relative flex cursor-pointer items-center text-3xl">
+        <li
+          className="relative flex cursor-pointer items-center text-3xl"
+          onClick={() => cartStore.toggleCart()}
+        >
           <AiFillShopping />
           <span className="absolute bottom-4 left-4 flex h-5 w-5 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white">
             {cartStore.cart.length}
