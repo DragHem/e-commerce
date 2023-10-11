@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { SearchParamTypes } from '@/types/SearchParamType';
 import formatPrice from '@/util/formatPrice';
+import AddCart from '@/app/product/[id]/AddCart';
 
 const ProductPage = async ({ searchParams }: SearchParamTypes) => {
   const { image, name, description, unit_amount, features } = searchParams;
@@ -23,9 +24,7 @@ const ProductPage = async ({ searchParams }: SearchParamTypes) => {
             {unit_amount && formatPrice(unit_amount)}
           </p>
         </div>
-        <button className="my-12 rounded-md bg-teal-700 px-6 py-2 font-medium text-white">
-          Add to cart
-        </button>
+        <AddCart {...searchParams} />
       </div>
     </div>
   );

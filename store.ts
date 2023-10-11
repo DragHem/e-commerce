@@ -1,27 +1,46 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-type CartItem = {
-  id: string;
-  name: string;
-  image?: string[];
-  description?: string;
-  unit_amount: number;
-  quantity: number;
-};
+import { AddCartType } from '@/types/AddCartType';
 
 type CartState = {
   isOpen: boolean;
-  cart: CartItem[];
-  toggleCart: () => void;
+  cart: AddCartType[];
+  cartQuantity: number;
 };
 
-export const useCartStore = create<CartState>()(
+type ActionCartState = {
+  toggleCart: () => void;
+  addProduct: (item: AddCartType) => void;
+};
+
+export const useCartStore = create<CartState & ActionCartState>()(
   persist(
     (set) => ({
       cart: [],
       isOpen: false,
+      cartQuantity: 0,
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
+      addProduct: (item) =>
+        set((state) => {
+          const existingItem = state.cart.find(
+            (cartItem) => cartItem.id === item.id,
+          );
+
+          if (!existingItem) {
+            return {
+              cart: [...state.cart, { ...item, quantity: 1 }],
+              cartQuantity: state.cartQuantity + 1,
+            };
+          }
+
+          const updatedCart = state.cart.map((cartItem) => {
+            if (cartItem.id === item.id)
+              return { ...cartItem, quantity: cartItem.quantity! + 1 };
+
+            return cartItem;
+          });
+          return { cart: updatedCart, cartQuantity: state.cartQuantity + 1 };
+        }),
     }),
     { name: 'cart-store' },
   ),
