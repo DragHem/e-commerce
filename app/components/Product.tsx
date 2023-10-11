@@ -24,7 +24,7 @@ const Product = ({
     >
       <div className="text-gray-700">
         <Image
-          src={image}
+          src={image ? image : '/default-product-image.png'}
           alt={name}
           width={800}
           height={800}

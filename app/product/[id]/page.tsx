@@ -8,7 +8,12 @@ const ProductPage = async ({ searchParams }: SearchParamTypes) => {
 
   return (
     <div className="flex justify-between gap-24 p-12 text-gray-700">
-      <Image src={image} alt={name} width={600} height={600} />
+      <Image
+        src={image ? image : '/default-product-image.png'}
+        alt={name}
+        width={600}
+        height={600}
+      />
       <div className="font-medium text-gray-700">
         <h1 className="py-2 text-2xl">{name}</h1>
         <p className="py-2">{description}</p>

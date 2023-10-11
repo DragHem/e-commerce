@@ -10,7 +10,7 @@ const Nav = ({ user }: Session) => {
   return (
     <nav className="flex items-center justify-between py-8">
       <Link href="/">
-        <h1>Nav</h1>
+        <h1>Shop</h1>
       </Link>
       <ul className="flex items-center gap-12">
         {!user && (
