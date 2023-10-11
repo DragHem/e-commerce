@@ -4,7 +4,6 @@ import { useCartStore } from '@/store';
 import type { AddCartType } from '@/types/AddCartType';
 
 const AddCart = ({ name, id, image, unit_amount, quantity }: AddCartType) => {
-  console.log(image);
   const cartStore = useCartStore();
 
   return (

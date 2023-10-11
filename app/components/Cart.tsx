@@ -8,6 +8,11 @@ import { AiFillShopping } from 'react-icons/ai';
 const MyComponent = () => {
   const cartStore = useCartStore();
 
+  const totalPrice = cartStore.cart.reduce(
+    (prev, item) => prev + item.unit_amount! * item.quantity!,
+    0,
+  );
+
   return (
     <div
       className="fixed left-0 top-0 h-screen w-full bg-black/25"
@@ -55,9 +60,12 @@ const MyComponent = () => {
           </div>
         ))}
         {!cartStore.cartQuantity || (
-          <button className="mt-4 w-full rounded-md bg-teal-700 py-2 text-white">
-            Check out
-          </button>
+          <>
+            <p>Total: {formatPrice(totalPrice)}</p>
+            <button className="mt-4 w-full rounded-md bg-teal-700 py-2 text-white">
+              Check out
+            </button>
+          </>
         )}
         {!cartStore.cartQuantity && (
           <div className="flex flex-col items-center gap-4 pt-56 text-2xl font-medium opacity-75">
