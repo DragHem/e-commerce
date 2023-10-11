@@ -3,7 +3,6 @@ import Product from '@/app/components/Product';
 
 export default async function Home() {
   const products = await getProducts();
-  console.log(products);
 
   return (
     <main className="grid-cols-fluid grid gap-12">
