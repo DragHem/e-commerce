@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useCartStore } from '@/store';
 import formatPrice from '@/util/formatPrice';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
-import { AiFillShopping } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const Cart = () => {
@@ -31,9 +31,14 @@ const Cart = () => {
       <motion.div
         layout
         onClick={(e) => e.stopPropagation()}
-        className="absolute right-0 top-0 h-screen w-1/4 overflow-y-scroll bg-white p-12 text-gray-700"
+        className="absolute right-0 top-0 h-screen w-full overflow-y-scroll bg-white p-12 text-gray-700 lg:w-2/5"
       >
-        <h1>Here's your shopping list</h1>
+        <div className="flex justify-between">
+          <h1>Here's your shopping list</h1>
+          <button onClick={() => cartStore.toggleCart()} className="md:hidden">
+            <AiFillCloseCircle size={24} />
+          </button>
+        </div>
         {cartStore.cart.map(({ id, name, image, unit_amount, quantity }) => (
           <motion.div layout className="flex gap-4 py-4" key={id}>
             <Image
