@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useCartStore } from '@/store';
 import formatPrice from '@/util/formatPrice';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
+import { AiFillShopping } from 'react-icons/ai';
 
 const MyComponent = () => {
   const cartStore = useCartStore();
@@ -53,9 +54,17 @@ const MyComponent = () => {
             </div>
           </div>
         ))}
-        <button className="mt-4 w-full rounded-md bg-teal-700 py-2 text-white">
-          Check out
-        </button>
+        {!cartStore.cartQuantity || (
+          <button className="mt-4 w-full rounded-md bg-teal-700 py-2 text-white">
+            Check out
+          </button>
+        )}
+        {!cartStore.cartQuantity && (
+          <div className="flex flex-col items-center gap-4 pt-56 text-2xl font-medium opacity-75">
+            <h1>Your cart is empty...</h1>
+            <AiFillShopping size={70} />
+          </div>
+        )}
       </div>
     </div>
   );
