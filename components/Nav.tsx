@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/store';
-import Cart from '@/app/components/Cart';
+import Cart from '@/components/Cart';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
 
