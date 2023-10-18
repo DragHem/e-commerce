@@ -1,12 +1,16 @@
 import type { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next';
+import { getServerSession } from 'next-auth/next';
 
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/libs/prisma';
 
 import Stripe from 'stripe';
-
-const prisma = new PrismaClient();
 
 export const options: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -39,8 +43,24 @@ export const options: AuthOptions = {
       }
     },
   },
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.id = user.id;
+
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === 'development',
 };
+
+export function auth(
+  ...args:
+    | [GetServerSidePropsContext['req'], GetServerSidePropsContext['res']]
+    | [NextApiRequest, NextApiResponse]
+    | []
+) {
+  return getServerSession(...args, options);
+}
 
 export default options;
