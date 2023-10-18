@@ -1,9 +1,8 @@
 import './globals.css';
-import NextAuthProvider from './context/SessionContext';
-import Nav from '@/app/components/Nav';
-import { getServerSession } from 'next-auth/next';
-import authOptions from '@/libs/authOptions';
-import Hydrate from '@/app/components/Hydrate';
+import NextAuthProvider from '@/context/SessionContext';
+import Nav from '@/components/Nav';
+import { auth } from '@/libs/authOptions';
+import Hydrate from '@/components/Hydrate';
 import { Roboto } from 'next/font/google';
 
 export const metadata = {
@@ -21,14 +20,14 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
 
   return (
     <html lang="en">
       <body className={`mx-4 lg:mx-48 ${roboto.className}`}>
         <NextAuthProvider>
           <Hydrate>
-            <Nav user={session?.user} expires={session?.expires as string} />
+            <Nav user={session?.user!} expires={session?.expires as string} />
             {children}
           </Hydrate>
         </NextAuthProvider>

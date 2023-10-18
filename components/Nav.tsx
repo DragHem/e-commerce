@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import type { Session } from 'next-auth';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/store';
-import Cart from '@/app/components/Cart';
+import Cart from '@/components/Cart';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Session } from 'next-auth';
 
 const Nav = ({ user }: Session) => {
   const cartStore = useCartStore();
@@ -47,7 +47,7 @@ const Nav = ({ user }: Session) => {
         {user && (
           <li>
             <Image
-              src={user?.image as string}
+              src={user.image as string}
               alt={user.name as string}
               width={36}
               height={36}

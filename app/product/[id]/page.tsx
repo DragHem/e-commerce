@@ -8,7 +8,7 @@ const ProductPage = async ({ searchParams }: SearchParamTypes) => {
   const { image, name, description, unit_amount, features } = searchParams;
 
   return (
-    <div className="flex justify-between gap-24 p-12 text-gray-700">
+    <div className="flex flex-col justify-between gap-24 text-gray-700 md:flex-row">
       <Image
         src={image ? image : '/default-product-image.png'}
         alt={name}
