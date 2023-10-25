@@ -11,7 +11,7 @@ const AddCart = ({ name, id, image, unit_amount, quantity }: AddCartType) => {
       onClick={() =>
         cartStore.addProduct({ id, name, image, unit_amount, quantity })
       }
-      className="my-12  px-6 py-2 "
+      className="btn btn-primary my-4 w-full"
     >
       Add to cart
     </button>
