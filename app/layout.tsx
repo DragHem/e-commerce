@@ -1,5 +1,4 @@
 import './globals.css';
-import NextAuthProvider from '@/context/SessionContext';
 import Nav from '@/components/Nav';
 import { auth } from '@/libs/authOptions';
 import Hydrate from '@/components/Hydrate';
@@ -23,15 +22,11 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en" data-theme="light">
-      <body className={`mx-4 lg:mx-48 ${roboto.className}`}>
-        <NextAuthProvider>
-          <Hydrate>
-            <Nav user={session?.user!} expires={session?.expires as string} />
-            {children}
-          </Hydrate>
-        </NextAuthProvider>
-      </body>
+    <html lang="en" className={roboto.className}>
+      <Hydrate>
+        <Nav user={session?.user!} expires={session?.expires as string} />
+        {children}
+      </Hydrate>
     </html>
   );
 }

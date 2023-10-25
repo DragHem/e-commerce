@@ -9,6 +9,7 @@ import Cart from '@/components/Cart';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Session } from 'next-auth';
+import DarkModeSwitch from '@/components/DarkModeSwith';
 
 const Nav = ({ user }: Session) => {
   const cartStore = useCartStore();
@@ -18,7 +19,7 @@ const Nav = ({ user }: Session) => {
       <Link href="/">
         <h1>Shop</h1>
       </Link>
-      <ul className="flex items-center gap-12">
+      <ul className="flex items-center gap-8">
         <li
           className="relative flex cursor-pointer items-center text-3xl"
           onClick={() => cartStore.toggleCart()}
@@ -39,6 +40,7 @@ const Nav = ({ user }: Session) => {
             )}
           </AnimatePresence>
         </li>
+        <DarkModeSwitch />
         {!user && (
           <li className="bg-primary rounded-md px-4 py-2 text-white">
             <button onClick={() => signIn()}>Sign in</button>
