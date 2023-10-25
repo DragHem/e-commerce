@@ -46,13 +46,15 @@ const Nav = ({ user }: Session) => {
         )}
         {user && (
           <li>
-            <Image
-              src={user.image as string}
-              alt={user.name as string}
-              width={36}
-              height={36}
-              className="rounded-full"
-            />
+            <Link href="/dashboard">
+              <Image
+                src={user.image as string}
+                alt={user.name as string}
+                width={36}
+                height={36}
+                className="rounded-full"
+              />
+            </Link>
           </li>
         )}
       </ul>
