@@ -2,7 +2,7 @@
 
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { useCartStore } from '@/store';
+import { useCartStore, useThemeStore } from '@/store';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CheckoutForm from '@/components/CheckoutForm';
@@ -15,6 +15,7 @@ const stripePromise = loadStripe(
 
 const Checkout = () => {
   const cartStore = useCartStore();
+  const themeStore = useThemeStore();
   const [clientSecret, setClientSecret] = useState('');
 
   const router = useRouter();
@@ -45,7 +46,7 @@ const Checkout = () => {
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
-      theme: 'stripe',
+      theme: themeStore.mode === 'light' ? 'stripe' : 'night',
       labels: 'floating',
     },
   };
