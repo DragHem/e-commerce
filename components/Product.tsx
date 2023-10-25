@@ -22,7 +22,7 @@ const Product = ({
         query: { name, image, unit_amount, id, description, features },
       }}
     >
-      <div className="text-gray-700">
+      <div>
         <Image
           src={image ? image : '/default-product-image.png'}
           alt={name}
@@ -32,7 +32,7 @@ const Product = ({
         />
         <div className="py-2 font-medium">
           <h1>{name}</h1>
-          <h2 className="text-sm text-teal-700">
+          <h2 className="text-primary text-sm">
             {unit_amount && formatPrice(unit_amount)}
           </h2>
         </div>
