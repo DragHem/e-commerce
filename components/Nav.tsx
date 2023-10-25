@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/store';
@@ -40,21 +40,49 @@ const Nav = ({ user }: Session) => {
           </AnimatePresence>
         </li>
         {!user && (
-          <li className="bg-primary rounded-md p-2 text-white">
+          <li className="bg-primary rounded-md px-4 py-2 text-white">
             <button onClick={() => signIn()}>Sign in</button>
           </li>
         )}
         {user && (
           <li>
-            <Link href="/dashboard">
+            <div className="dropdown dropdown-end cursor-pointer">
               <Image
                 src={user.image as string}
                 alt={user.name as string}
                 width={36}
                 height={36}
                 className="rounded-full"
+                tabIndex={0}
               />
-            </Link>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box w-72 space-y-4 p-4 shadow"
+              >
+                <Link
+                  className="hover:bg-base-300 rounded-md p-4"
+                  href={'/dashboard'}
+                  onClick={() => {
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
+                  }}
+                >
+                  Orders
+                </Link>
+                <li
+                  className="hover:bg-base-300 rounded-md p-4"
+                  onClick={() => {
+                    signOut();
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
+                  }}
+                >
+                  Sign out
+                </li>
+              </ul>
+            </div>
           </li>
         )}
       </ul>
