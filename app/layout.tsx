@@ -2,7 +2,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 import { auth } from '@/libs/authOptions';
 import Hydrate from '@/components/Hydrate';
-import { Roboto } from 'next/font/google';
+import { Roboto, Lobster_Two } from 'next/font/google';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,6 +12,13 @@ export const metadata = {
 const roboto = Roboto({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
+  variable: '--font-roboto',
+});
+
+const lobster = Lobster_Two({
+  weight: '700',
+  subsets: ['latin'],
+  variable: '--font-lobster',
 });
 
 export default async function RootLayout({
@@ -22,7 +29,7 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en" className={`${roboto.variable} ${lobster.variable}`}>
       <Hydrate>
         <Nav user={session?.user!} expires={session?.expires as string} />
         {children}
