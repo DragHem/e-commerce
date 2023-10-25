@@ -21,7 +21,6 @@ const Checkout = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log('ile razy');
     fetch('/api/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
