@@ -47,18 +47,6 @@ const Cart = () => {
           </div>
         )}
 
-        {cartStore.onCheckout === 'checkout' && (
-          <div className="mb-4 flex justify-between">
-            <h1>Here is your checkout list</h1>
-            <button
-              onClick={() => cartStore.setCheckout('cart')}
-              className="md:hidden"
-            >
-              Check your cart
-            </button>
-          </div>
-        )}
-
         {cartStore.onCheckout === 'cart' && (
           <>
             {cartStore.cart.map(
@@ -116,6 +104,17 @@ const Cart = () => {
         {/*checkout form*/}
         {cartStore.onCheckout === 'checkout' && <Checkout />}
         {cartStore.onCheckout === 'success' && <OrderConfirmed />}
+
+        {cartStore.onCheckout === 'checkout' && (
+          <div className="mt-4 flex">
+            <button
+              className="w-full rounded-md bg-red-300 py-2 text-white disabled:opacity-25"
+              onClick={() => cartStore.setCheckout('cart')}
+            >
+              Check your cart
+            </button>
+          </div>
+        )}
 
         <AnimatePresence>
           {!cartStore.cartQuantity && cartStore.onCheckout === 'cart' && (
