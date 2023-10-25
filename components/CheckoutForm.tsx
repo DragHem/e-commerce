@@ -51,11 +51,11 @@ const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
   };
 
   return (
-    <form className="text-gray-600" id="payment-form" onSubmit={handleSubmit}>
+    <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" options={{ layout: 'tabs' }} />
       <h2 className="py-4 text-sm font-bold">Total: {formattedPrice}</h2>
       <button
-        className="w-full rounded-md bg-teal-700 py-2 text-white disabled:opacity-25"
+        className="bg-primary w-full rounded-md py-2 text-white disabled:opacity-25"
         id="submit"
         disabled={isLoading || !stripe || !elements}
       >

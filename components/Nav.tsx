@@ -32,7 +32,7 @@ const Nav = ({ user }: Session) => {
                 }}
                 initial={{ scale: 0 }}
                 exit={{ scale: 0 }}
-                className="absolute bottom-4 left-4 flex h-5 w-5 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white"
+                className="bg-primary absolute bottom-4 left-4 flex h-5 w-5 items-center justify-center rounded-full text-sm font-bold text-white"
               >
                 {cartStore.cartQuantity}
               </motion.span>
@@ -40,7 +40,7 @@ const Nav = ({ user }: Session) => {
           </AnimatePresence>
         </li>
         {!user && (
-          <li className="rounded-md bg-teal-600 p-2 text-white">
+          <li className="bg-primary rounded-md p-2 text-white">
             <button onClick={() => signIn()}>Sign in</button>
           </li>
         )}

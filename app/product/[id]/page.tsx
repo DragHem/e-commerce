@@ -15,12 +15,12 @@ const ProductPage = async ({ searchParams }: SearchParamTypes) => {
         width={600}
         height={600}
       />
-      <div className="font-medium text-gray-700">
+      <div className="font-medium">
         <h1 className="py-2 text-2xl">{name}</h1>
         <p className="py-2">{description}</p>
         <p className="py-2">{features}</p>
         <div className="flex gap-2">
-          <p className="font-bold text-teal-700">
+          <p className="text-primary font-bold">
             {unit_amount && formatPrice(unit_amount)}
           </p>
         </div>
