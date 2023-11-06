@@ -9,10 +9,12 @@ export default async function getOrders() {
   const orders = await client.order.findMany({
     where: {
       userId: session.user.id,
-      status: 'complete',
     },
     include: {
       products: true,
+    },
+    orderBy: {
+      createdDate: 'desc',
     },
   });
 
