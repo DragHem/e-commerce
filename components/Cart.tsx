@@ -33,7 +33,7 @@ const Cart = () => {
       <motion.div
         layout
         onClick={(e) => e.stopPropagation()}
-        className="absolute right-0 top-0 h-screen w-full overflow-y-scroll bg-white p-12 text-gray-700 lg:w-1/4"
+        className="bg-base-200 absolute right-0 top-0 h-screen w-full overflow-y-scroll p-12 lg:w-1/4"
       >
         {cartStore.onCheckout === 'cart' && (
           <div className="mb-4 flex justify-between">
@@ -51,7 +51,11 @@ const Cart = () => {
           <>
             {cartStore.cart.map(
               ({ id, name, image, unit_amount, quantity }) => (
-                <motion.div layout className="flex gap-4 py-4" key={id}>
+                <motion.div
+                  layout
+                  className="bg-base-100 my-4 flex gap-4 rounded-lg p-4"
+                  key={id}
+                >
                   <Image
                     className="h-24 rounded-md"
                     src={image ? image : '/default-product-image.png'}
@@ -94,7 +98,7 @@ const Cart = () => {
             <p>Total: {formatPrice(totalPrice)}</p>
             <button
               onClick={() => cartStore.setCheckout('checkout')}
-              className="mt-4 w-full rounded-md bg-teal-700 py-2 text-white"
+              className="bg-primary mt-4 w-full rounded-md py-2 text-white"
             >
               Check out
             </button>
@@ -108,7 +112,7 @@ const Cart = () => {
         {cartStore.onCheckout === 'checkout' && (
           <div className="mt-4 flex">
             <button
-              className="w-full rounded-md bg-red-300 py-2 text-white disabled:opacity-25"
+              className="bg-accent w-full rounded-md py-2 text-white disabled:opacity-25"
               onClick={() => cartStore.setCheckout('cart')}
             >
               Check your cart

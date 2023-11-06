@@ -22,7 +22,6 @@ export async function POST(request: Request) {
     return Response.json({ message: 'Not logged in' }, { status: 403 });
 
   const { items, payment_intent_id } = await request.json();
-  console.log({ items, payment_intent_id });
 
   const orderData = {
     user: { connect: { id: userSession.user?.id } },
@@ -67,7 +66,7 @@ export async function POST(request: Request) {
         );
       }
 
-      const updated_order = await client.order.update({
+      await client.order.update({
         where: { id: existing_order.id },
         data: {
           amount: calculateOrderAmount(items),
@@ -99,7 +98,7 @@ export async function POST(request: Request) {
 
     orderData.paymentIntentID = paymentIntent.id;
 
-    const newOrder = await client.order.create({
+    await client.order.create({
       data: orderData,
     });
 
