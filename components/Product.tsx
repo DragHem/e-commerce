@@ -11,15 +11,12 @@ const Product = ({
   image,
   id,
   description,
-  metadata,
 }: ProductType) => {
-  const { features } = metadata;
-
   return (
     <Link
       href={{
         pathname: `/product/${id}`,
-        query: { name, image, unit_amount, id, description, features },
+        query: { name, description },
       }}
     >
       <div>
@@ -29,10 +26,11 @@ const Product = ({
           width={800}
           height={800}
           className="h-96 w-full rounded-lg object-cover"
+          priority
         />
         <div className="py-2 font-medium">
           <h1>{name}</h1>
-          <h2 className="text-primary text-sm">
+          <h2 className="text-sm text-primary">
             {unit_amount && formatPrice(unit_amount)}
           </h2>
         </div>

@@ -4,8 +4,35 @@ import { SearchParamTypes } from '@/types/SearchParamType';
 import formatPrice from '@/util/formatPrice';
 import AddCart from '@/app/product/[id]/AddCart';
 
-const ProductPage = async ({ searchParams }: SearchParamTypes) => {
-  const { image, name, description, unit_amount, features } = searchParams;
+import type { Metadata } from 'next';
+import getProduct from '@/actions/stripe/getProductById';
+
+type Props = {
+  searchParams: { name: string; description: string };
+};
+
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
+  const { name: title, description } = searchParams;
+
+  return {
+    title,
+    description,
+  };
+}
+
+const ProductPage = async ({ params }: SearchParamTypes) => {
+  const { id } = params;
+
+  const product = await getProduct(id);
+  const {
+    image,
+    name,
+    description,
+    unit_amount,
+    metadata: { features },
+  } = product;
 
   return (
     <div className="flex flex-col justify-between gap-16 md:flex-row">
@@ -15,17 +42,18 @@ const ProductPage = async ({ searchParams }: SearchParamTypes) => {
         width={600}
         height={600}
         className="rounded-lg"
+        priority
       />
       <div className="font-medium">
         <h1 className="py-2 text-2xl">{name}</h1>
         <p className="py-2">{description}</p>
         <p className="py-2">{features}</p>
         <div className="flex gap-2">
-          <p className="text-primary font-bold">
+          <p className="font-bold text-primary">
             {unit_amount && formatPrice(unit_amount)}
           </p>
         </div>
-        <AddCart {...searchParams} />
+        <AddCart {...product} />
       </div>
     </div>
   );

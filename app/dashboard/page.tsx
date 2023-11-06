@@ -23,7 +23,7 @@ const Dashboard = async () => {
         {orders.map((order) => (
           <div
             key={order.id}
-            className="bg-base-200 my-4 space-y-2 rounded-lg p-8"
+            className="my-4 space-y-2 rounded-lg bg-base-200 p-8"
           >
             <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
             <p className="text-xs">
@@ -53,6 +53,8 @@ const Dashboard = async () => {
                       width={92}
                       height={92}
                       alt={product.name}
+                      priority
+                      className="w-auto"
                     />
                     <p>{formatPrice(product.unit_amount)}</p>
                     <p>Quantity: {product.quantity}</p>
