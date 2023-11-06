@@ -1,13 +1,9 @@
 import Stripe from 'stripe';
 import client from '@/libs/prisma';
 import { headers } from 'next/headers';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2023-08-16',
-});
+import stripe from '@/libs/stripe';
 
 export async function POST(request: Request) {
-  // const buf = await buffer(request as NextApiRequest);
   const signature = headers().get('stripe-signature') as string;
   const body = await request.text();
 

@@ -1,12 +1,8 @@
-import Stripe from 'stripe';
 import { auth } from '@/libs/authOptions';
 import { AddCartType } from '@/types/AddCartType';
 import client from '@/libs/prisma';
 import { Product } from '.prisma/client';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2023-08-16',
-});
+import stripe from '@/libs/stripe';
 
 const calculateOrderAmount = (items: AddCartType[]) => {
   return items.reduce(
