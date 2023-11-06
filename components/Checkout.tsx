@@ -48,6 +48,7 @@ const Checkout = () => {
       theme: themeStore.mode === 'light' ? 'stripe' : 'night',
       labels: 'floating',
     },
+    locale: 'en',
   };
 
   return (
