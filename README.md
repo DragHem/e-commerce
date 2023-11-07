@@ -14,7 +14,20 @@ Future development:
 - Adding an admin panel:
     - Order management
     - Product management
-- Adding Cloudinary integration for image optimization
+- Adding Cloudinary integration for image optimization  
+
+## Payments  
+**Payments are in test mode. To test them, please provide your name, address and payment details below**
+```
+# Card number
+4242 4242 4242 4242
+
+# Expiration
+04/24
+
+# CVC
+424
+```
 
 ## Getting Started
 
