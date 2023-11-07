@@ -5,7 +5,7 @@ import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/store';
-import Cart from '@/components/Cart';
+import Cart from '@/components/Cart/Cart';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Session } from 'next-auth';
@@ -33,7 +33,7 @@ const Nav = ({ user }: Session) => {
                 }}
                 initial={{ scale: 0 }}
                 exit={{ scale: 0 }}
-                className="bg-primary absolute bottom-4 left-4 flex h-5 w-5 items-center justify-center rounded-full text-sm font-bold text-white"
+                className="absolute bottom-4 left-4 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
               >
                 {cartStore.cartQuantity}
               </motion.span>
@@ -42,7 +42,7 @@ const Nav = ({ user }: Session) => {
         </li>
         <DarkModeSwitch />
         {!user && (
-          <li className="bg-primary rounded-md px-4 py-2 text-white">
+          <li className="rounded-md bg-primary px-4 py-2 text-white">
             <button onClick={() => signIn()}>Sign in</button>
           </li>
         )}
@@ -59,10 +59,10 @@ const Nav = ({ user }: Session) => {
               />
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box w-72 space-y-4 p-4 shadow"
+                className="menu dropdown-content rounded-box w-72 space-y-4 bg-base-100 p-4 shadow"
               >
                 <Link
-                  className="hover:bg-base-300 rounded-md p-4"
+                  className="rounded-md p-4 hover:bg-base-300"
                   href={'/dashboard'}
                   onClick={() => {
                     if (document.activeElement instanceof HTMLElement) {
@@ -73,7 +73,7 @@ const Nav = ({ user }: Session) => {
                   Orders
                 </Link>
                 <li
-                  className="hover:bg-base-300 rounded-md p-4"
+                  className="rounded-md p-4 hover:bg-base-300"
                   onClick={() => {
                     signOut();
                     if (document.activeElement instanceof HTMLElement) {
