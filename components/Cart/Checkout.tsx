@@ -5,8 +5,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { useCartStore, useThemeStore } from '@/store';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import CheckoutForm from '@/components/CheckoutForm';
-import OrderAnimation from '@/components/OrderAnimations';
+import CheckoutForm from '@/components/Cart/CheckoutForm';
+import OrderAnimation from '@/components/animations/OrderAnimation';
 import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(
@@ -59,6 +59,14 @@ const Checkout = () => {
           <Elements options={options} stripe={stripePromise}>
             <CheckoutForm clientSecret={clientSecret} />
           </Elements>
+          <div className="mt-4 flex">
+            <button
+              className="btn btn-accent w-full rounded-md py-2 text-white"
+              onClick={() => cartStore.setCheckout('cart')}
+            >
+              Check your cart
+            </button>
+          </div>
         </motion.div>
       )}
     </div>
