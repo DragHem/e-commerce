@@ -43,6 +43,7 @@ const ProductPage = async ({ params }: SearchParamTypes) => {
         height={600}
         className="rounded-lg"
         priority
+        placeholder="blur"
       />
       <div className="font-medium">
         <h1 className="py-2 text-2xl">{name}</h1>

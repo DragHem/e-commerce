@@ -56,6 +56,7 @@ const Nav = ({ user }: Session) => {
                 height={36}
                 className="rounded-full"
                 tabIndex={0}
+                placeholder="blur"
               />
               <ul
                 tabIndex={0}

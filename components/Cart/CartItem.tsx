@@ -16,6 +16,7 @@ const CartItem = ({ id, name, image, unit_amount, quantity }: AddCartType) => {
         alt={name}
         width={120}
         height={120}
+        placeholder="blur"
       />
       <div>
         <h2>{name}</h2>
