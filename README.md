@@ -1,6 +1,6 @@
 ## Online Store (Expanding)
 
-A simple online store with Stripe payment integration and Google login.
+A simple online store with Stripe payment integration and Google login.  
 Live: <https://e-commerce-ten-drab.vercel.app/>
 
 ## Technologies used:
