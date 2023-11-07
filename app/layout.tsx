@@ -1,7 +1,7 @@
 import './globals.css';
 import Nav from '@/components/Nav';
 import { auth } from '@/libs/authOptions';
-import Hydrate from '@/components/Hydrate';
+import Hydrate from '@/components/util/Hydrate';
 import { Roboto, Lobster_Two } from 'next/font/google';
 
 export const metadata = {
