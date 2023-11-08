@@ -55,7 +55,6 @@ const Dashboard = async () => {
                       alt={product.name}
                       priority
                       className="w-auto"
-                      placeholder="blur"
                     />
                     <p>{formatPrice(product.unit_amount)}</p>
                     <p>Quantity: {product.quantity}</p>
