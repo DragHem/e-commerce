@@ -16,7 +16,7 @@ const Hydrate = ({ children }: { children: ReactNode }) => {
     <>
       {isHydrated ? (
         <body
-          className="px-4 font-roboto lg:px-48"
+          className="px-4 font-roboto antialiased md:px-16 lg:px-32 xl:px-48"
           data-theme={themeStore.mode}
         >
           {children}

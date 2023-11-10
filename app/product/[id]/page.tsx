@@ -35,16 +35,18 @@ const ProductPage = async ({ params }: SearchParamTypes) => {
   } = product;
 
   return (
-    <div className="flex flex-col justify-between gap-16 md:flex-row">
-      <Image
-        src={image ? image : '/default-product-image.png'}
-        alt={name}
-        width={600}
-        height={600}
-        className="rounded-lg"
-        priority
-      />
-      <div className="font-medium">
+    <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-16">
+      <div>
+        <Image
+          src={image ? image : '/default-product-image.png'}
+          alt={name}
+          width={510}
+          height={635}
+          className="h-3/4 rounded-lg object-cover object-center"
+          priority
+        />
+      </div>
+      <div className="flex-1 font-medium">
         <h1 className="py-2 text-2xl">{name}</h1>
         <p className="py-2">{description}</p>
         <p className="py-2">{features}</p>
